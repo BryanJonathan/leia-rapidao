@@ -1,0 +1,409 @@
+/* ===========================================
+   RSVP Reader - Modern CSS
+   =========================================== */
+
+/* Base Layout */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* ===========================================
+   Settings Toggle Button
+   =========================================== */
+.settings-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #eaeaea;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.settings-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* ===========================================
+   Settings Panel
+   =========================================== */
+.settings-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #16213e;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 260px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  backdrop-filter: blur(10px);
+}
+
+.settings-panel h3 {
+  margin: 0 0 20px 0;
+  color: #eaeaea;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.setting-item {
+  margin-bottom: 20px;
+}
+
+.setting-item:last-child {
+  margin-bottom: 0;
+}
+
+.setting-item label {
+  display: block;
+  margin-bottom: 8px;
+  color: #a0a0a0;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.setting-item input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #eaeaea;
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.setting-item input[type="number"]:focus {
+  outline: none;
+  border-color: #4a6fa5;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.setting-item input[type="color"] {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* ===========================================
+   Central Content
+   =========================================== */
+.central-content {
+  width: 100%;
+  max-width: 650px;
+}
+
+/* ===========================================
+   Input Section
+   =========================================== */
+.input-section {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #eaeaea;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  color: #666;
+  margin: 0 0 40px 0;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.text-input {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #eaeaea;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 200px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.text-input::placeholder {
+  color: #555;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #4a6fa5;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.word-count {
+  text-align: right;
+  color: #555;
+  font-size: 13px;
+  margin: 12px 0 28px 0;
+}
+
+.start-button {
+  padding: 16px 56px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4a6fa5, #6b8cce);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 111, 165, 0.4);
+}
+
+.start-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===========================================
+   Reader Section
+   =========================================== */
+.reader-section {
+  text-align: center;
+}
+
+.word-display {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+/* ===========================================
+   Focus Frame - Área de foco visual
+   =========================================== */
+.focus-frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.focus-line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Linha vertical superior */
+.focus-line-top-left,
+.focus-line-top-right {
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 25px;
+}
+
+/* Linha vertical inferior */
+.focus-line-bottom-left,
+.focus-line-bottom-right {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 25px;
+}
+
+/* Linhas horizontais superiores */
+.focus-line-top-left::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.focus-line-top-right::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Linhas horizontais inferiores */
+.focus-line-bottom-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.focus-line-bottom-right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===========================================
+   Word Display
+   =========================================== */
+.word {
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.orp {
+  font-weight: 700;
+}
+
+.finished-text {
+  font-size: 2rem;
+  color: #4ade80;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================================
+   Progress Bar
+   =========================================== */
+.progress-container {
+  margin-bottom: 36px;
+  padding: 0 20px;
+}
+
+.progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a6fa5, #6b8cce);
+  border-radius: 2px;
+  transition: width 0.15s ease-out;
+}
+
+.progress-text {
+  color: #666;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ===========================================
+   Control Buttons
+   =========================================== */
+.controls {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.control-btn {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eaeaea;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.08);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===========================================
+   New Text Button
+   =========================================== */
+.new-text-btn {
+  padding: 12px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: transparent;
+  color: #666;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.new-text-btn:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #eaeaea;
+  background: rgba(255, 255, 255, 0.05);
+}
