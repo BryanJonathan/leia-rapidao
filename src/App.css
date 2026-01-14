@@ -407,3 +407,215 @@
   color: #eaeaea;
   background: rgba(255, 255, 255, 0.05);
 }
+
+/* ===========================================
+   Mobile Responsive
+   =========================================== */
+
+/* Tablets e telas menores */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+
+  .settings-toggle {
+    top: 12px;
+    right: 12px;
+  }
+
+  .settings-panel {
+    top: 60px;
+    right: 12px;
+    left: 12px;
+    min-width: auto;
+    max-width: none;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .text-input {
+    padding: 16px;
+    min-height: 160px;
+    font-size: 15px;
+  }
+
+  .start-button {
+    padding: 14px 40px;
+    width: 100%;
+  }
+
+  .word-display {
+    height: 120px;
+    margin-bottom: 32px;
+  }
+
+  .word {
+    font-size: 2.5rem;
+  }
+
+  /* Linhas de foco menores no mobile */
+  .focus-line-top-left::after,
+  .focus-line-top-right::after,
+  .focus-line-bottom-left::after,
+  .focus-line-bottom-right::after {
+    width: 120px;
+  }
+
+  .focus-line-top-left,
+  .focus-line-top-right,
+  .focus-line-bottom-left,
+  .focus-line-bottom-right {
+    height: 20px;
+  }
+
+  .progress-container {
+    padding: 0 10px;
+    margin-bottom: 28px;
+  }
+
+  .controls {
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .control-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .control-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .new-text-btn {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+
+  .finished-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 12px;
+    padding-top: 56px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .text-input {
+    padding: 14px;
+    min-height: 140px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  .word-count {
+    font-size: 12px;
+    margin: 8px 0 20px 0;
+  }
+
+  .start-button {
+    padding: 12px 32px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  .word-display {
+    height: 100px;
+    margin-bottom: 24px;
+  }
+
+  .word {
+    font-size: 2rem;
+  }
+
+  /* Linhas de foco ainda menores */
+  .focus-line-top-left::after,
+  .focus-line-top-right::after,
+  .focus-line-bottom-left::after,
+  .focus-line-bottom-right::after {
+    width: 80px;
+  }
+
+  .focus-line-top-left,
+  .focus-line-top-right,
+  .focus-line-bottom-left,
+  .focus-line-bottom-right {
+    height: 15px;
+  }
+
+  .progress-container {
+    padding: 0;
+    margin-bottom: 24px;
+  }
+
+  .progress-text {
+    font-size: 12px;
+  }
+
+  .controls {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .control-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .control-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .new-text-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .finished-text {
+    font-size: 1.3rem;
+  }
+
+  .settings-panel {
+    padding: 20px;
+  }
+
+  .settings-panel h3 {
+    font-size: 16px;
+  }
+
+  .setting-item label {
+    font-size: 12px;
+  }
+
+  .setting-item input[type="number"] {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  .setting-item input[type="color"] {
+    height: 40px;
+  }
+}
