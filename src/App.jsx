@@ -19,6 +19,7 @@ function CentralReader() {
   const { settings, updateSettings } = useSettings();
   const [showSettings, setShowSettings] = useState(false);
   const [inputText, setInputText] = useState(DEFAULT_TEXT);
+  const [speedInput, setSpeedInput] = useState(String(settings.speed));
   const rsvp = useRSVP();
 
   const handleStart = () => {
@@ -85,13 +86,25 @@ function CentralReader() {
             <label>Speed (ms)</label>
             <input
               type="number"
-              value={settings.speed}
+              value={speedInput}
               onChange={(e) => {
                 rsvp.pause();
-                updateSettings({ speed: parseInt(e.target.value) || 200 });
+                setSpeedInput(e.target.value);
               }}
-              min={50}
-              max={2000}
+              onBlur={() => {
+                const value = parseInt(speedInput);
+                if (!value || value < 1) {
+                  setSpeedInput('1');
+                  updateSettings({ speed: 1 });
+                } else if (value > 1000) {
+                  setSpeedInput('1000');
+                  updateSettings({ speed: 1000 });
+                } else {
+                  updateSettings({ speed: value });
+                }
+              }}
+              min={1}
+              max={1000}
               step={10}
             />
           </div>
