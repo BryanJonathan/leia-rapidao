@@ -12,20 +12,20 @@ export function TextInputSection({ inputText, onInputChange, onStart }: TextInpu
 
   return (
     <div className="input-section">
-      <h1 className="title">RSVP Reader</h1>
-      <p className="subtitle">Paste your text and read faster</p>
+      <h1 className="title">Leitura Rápida</h1>
+      <p className="subtitle">Cole seu texto e leia mais rápido</p>
 
       <textarea
         className="text-input"
         value={inputText}
         onChange={onInputChange}
-        placeholder="Paste your text here..."
+        placeholder="Cole seu texto aqui..."
         rows={8}
-        aria-label="Text input for reading"
+        aria-label="Campo de texto para leitura"
       />
 
       <div className="word-count">
-        {wordCount} {wordCount === 1 ? 'word' : 'words'}
+        {wordCount} {wordCount === 1 ? 'palavra' : 'palavras'}
       </div>
 
       <button
@@ -33,7 +33,7 @@ export function TextInputSection({ inputText, onInputChange, onStart }: TextInpu
         onClick={onStart}
         disabled={isDisabled}
       >
-        Start Reading
+        Iniciar Leitura
       </button>
     </div>
   );

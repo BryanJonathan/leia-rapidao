@@ -12,7 +12,7 @@ export function SettingsToggle({ isOpen, onToggle }: SettingsToggleProps) {
     <button
       className="settings-toggle"
       onClick={onToggle}
-      aria-label={isOpen ? 'Close settings' : 'Open settings'}
+      aria-label={isOpen ? 'Fechar configurações' : 'Abrir configurações'}
     >
       {isOpen ? <IoClose /> : <IoSettings />}
     </button>
@@ -30,10 +30,10 @@ export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur
 
   return (
     <div className="settings-panel">
-      <h3>Settings</h3>
+      <h3>Configurações</h3>
 
       <div className="setting-item">
-        <label htmlFor="speed-input">Speed (ms)</label>
+        <label htmlFor="speed-input">Velocidade (ms)</label>
         <input
           id="speed-input"
           type="number"
@@ -47,7 +47,7 @@ export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur
       </div>
 
       <div className="setting-item">
-        <label htmlFor="text-color">Text Color</label>
+        <label htmlFor="text-color">Cor do Texto</label>
         <input
           id="text-color"
           type="color"
@@ -57,7 +57,7 @@ export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur
       </div>
 
       <div className="setting-item">
-        <label htmlFor="highlight-color">Highlight Color</label>
+        <label htmlFor="highlight-color">Cor do Destaque</label>
         <input
           id="highlight-color"
           type="color"

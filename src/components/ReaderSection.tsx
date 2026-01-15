@@ -42,7 +42,7 @@ export function ReaderSection({ rsvp, onNewText }: ReaderSectionProps) {
       />
 
       <button className="new-text-btn" onClick={onNewText}>
-        New Text
+        Novo Texto
       </button>
     </div>
   );

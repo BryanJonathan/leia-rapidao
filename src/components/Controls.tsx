@@ -13,21 +13,21 @@ export function Controls({ isPlaying, onTogglePlayPause, onRewind, onReset }: Co
       <button
         className="control-btn"
         onClick={onRewind}
-        aria-label="Rewind 5 words"
+        aria-label="Voltar 5 palavras"
       >
         <IoPlayBack />
       </button>
       <button
         className="control-btn"
         onClick={onTogglePlayPause}
-        aria-label={isPlaying ? 'Pause' : 'Play'}
+        aria-label={isPlaying ? 'Pausar' : 'Reproduzir'}
       >
         {isPlaying ? <IoPause /> : <IoPlay />}
       </button>
       <button
         className="control-btn"
         onClick={onReset}
-        aria-label="Reset"
+        aria-label="Reiniciar"
       >
         <IoStop />
       </button>
