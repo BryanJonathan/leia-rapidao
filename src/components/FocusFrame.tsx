@@ -1,3 +1,5 @@
+import '../styles/FocusFrame.css';
+
 export function FocusFrame() {
   return (
     <div className="focus-frame">

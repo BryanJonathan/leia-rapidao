@@ -1,0 +1,45 @@
+/* ===========================================
+   Reader Section
+   =========================================== */
+.reader-section {
+  text-align: center;
+}
+
+/* ===========================================
+   New Text Button
+   =========================================== */
+.new-text-btn {
+  padding: 12px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: transparent;
+  color: #666;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.new-text-btn:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #eaeaea;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===========================================
+   Mobile Responsive
+   =========================================== */
+@media (max-width: 768px) {
+  .new-text-btn {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-text-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
