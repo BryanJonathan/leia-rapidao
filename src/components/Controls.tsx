@@ -1,5 +1,6 @@
 import { IoPlay, IoPause, IoStop, IoPlayBack } from 'react-icons/io5';
 import { useSettings } from '../context/SettingsContext';
+import '../styles/Controls.css';
 
 interface ControlsProps {
   isPlaying: boolean;

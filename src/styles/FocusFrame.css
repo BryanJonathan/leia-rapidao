@@ -1,0 +1,111 @@
+/* ===========================================
+   Focus Frame - Área de foco visual
+   =========================================== */
+.focus-frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.focus-line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Linha vertical superior */
+.focus-line-top-left,
+.focus-line-top-right {
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 25px;
+}
+
+/* Linha vertical inferior */
+.focus-line-bottom-left,
+.focus-line-bottom-right {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 25px;
+}
+
+/* Linhas horizontais superiores */
+.focus-line-top-left::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.focus-line-top-right::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Linhas horizontais inferiores */
+.focus-line-bottom-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.focus-line-bottom-right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===========================================
+   Mobile Responsive
+   =========================================== */
+@media (max-width: 768px) {
+  .focus-line-top-left::after,
+  .focus-line-top-right::after,
+  .focus-line-bottom-left::after,
+  .focus-line-bottom-right::after {
+    width: 120px;
+  }
+
+  .focus-line-top-left,
+  .focus-line-top-right,
+  .focus-line-bottom-left,
+  .focus-line-bottom-right {
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .focus-line-top-left::after,
+  .focus-line-top-right::after,
+  .focus-line-bottom-left::after,
+  .focus-line-bottom-right::after {
+    width: 80px;
+  }
+
+  .focus-line-top-left,
+  .focus-line-top-right,
+  .focus-line-bottom-left,
+  .focus-line-bottom-right {
+    height: 15px;
+  }
+}

@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react';
 import { useSettings } from '../context/SettingsContext';
+import '../styles/TextInputSection.css';
 
 interface TextInputSectionProps {
   inputText: string;

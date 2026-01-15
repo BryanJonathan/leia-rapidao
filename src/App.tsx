@@ -3,7 +3,7 @@ import { SettingsProvider, useSettings } from './context/SettingsContext';
 import { useRSVP } from './hooks/useRSVP';
 import { SettingsToggle, SettingsPanel, TextInputSection, ReaderSection } from './components';
 import { DEFAULT_TEXT } from './utils/const';
-import './App.css';
+import './styles/App.css';
 
 function CentralReader() {
   const { updateSettings } = useSettings();

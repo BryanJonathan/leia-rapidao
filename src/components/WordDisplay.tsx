@@ -1,6 +1,7 @@
 import { useSettings } from '../context/SettingsContext';
 import { splitWordByORP } from '../utils/orp';
 import { FocusFrame } from './FocusFrame';
+import '../styles/WordDisplay.css';
 
 interface WordDisplayProps {
   currentWord?: string;

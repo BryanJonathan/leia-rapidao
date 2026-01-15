@@ -1,0 +1,49 @@
+/* ===========================================
+   Progress Bar
+   =========================================== */
+.progress-container {
+  margin-bottom: 36px;
+  padding: 0 20px;
+}
+
+.progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a6fa5, #6b8cce);
+  border-radius: 2px;
+  transition: width 0.15s ease-out;
+}
+
+.progress-text {
+  color: #666;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ===========================================
+   Mobile Responsive
+   =========================================== */
+@media (max-width: 768px) {
+  .progress-container {
+    padding: 0 10px;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-container {
+    padding: 0;
+    margin-bottom: 24px;
+  }
+
+  .progress-text {
+    font-size: 12px;
+  }
+}

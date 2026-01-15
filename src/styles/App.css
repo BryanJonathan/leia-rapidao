@@ -1,0 +1,35 @@
+/* ===========================================
+   App Container - Layout principal
+   =========================================== */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.central-content {
+  width: 100%;
+  max-width: 650px;
+}
+
+/* ===========================================
+   Mobile Responsive - App Container
+   =========================================== */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 12px;
+    padding-top: 56px;
+  }
+}

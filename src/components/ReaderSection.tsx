@@ -3,6 +3,7 @@ import { useSettings } from '../context/SettingsContext';
 import { WordDisplay } from './WordDisplay';
 import { ProgressBar } from './ProgressBar';
 import { Controls } from './Controls';
+import '../styles/ReaderSection.css';
 
 interface ReaderSectionProps {
   rsvp: RSVPHook;

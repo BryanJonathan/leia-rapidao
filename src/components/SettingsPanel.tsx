@@ -2,6 +2,7 @@ import { ChangeEvent } from 'react';
 import { IoClose, IoSettings } from 'react-icons/io5';
 import { useSettings } from '../context/SettingsContext';
 import { Language } from '../utils/i18n';
+import '../styles/SettingsPanel.css';
 
 interface SettingsToggleProps {
   isOpen: boolean;

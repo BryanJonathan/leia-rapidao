@@ -1,3 +1,5 @@
+import '../styles/ProgressBar.css';
+
 interface ProgressBarProps {
   progress: number;
   currentIndex: number;
