@@ -1,16 +1,28 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+
+export interface Settings {
+  speed: number;
+  textColor: string;
+  highlightColor: string;
+}
+
+interface SettingsContextType {
+  settings: Settings;
+  updateSettings: (newSettings: Partial<Settings>) => void;
+  resetSettings: () => void;
+}
 
 const STORAGE_KEY = 'rsvp-settings';
 
-const defaultSettings = {
-  speed: 200, // milliseconds per word
+const defaultSettings: Settings = {
+  speed: 200,
   textColor: '#ffffff',
   highlightColor: '#ff6b6b',
 };
 
-const SettingsContext = createContext(null);
+const SettingsContext = createContext<SettingsContextType | null>(null);
 
-function loadSettings() {
+function loadSettings(): Settings {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
@@ -22,7 +34,7 @@ function loadSettings() {
   return defaultSettings;
 }
 
-function saveSettings(settings) {
+function saveSettings(settings: Settings): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
   } catch (e) {
@@ -30,14 +42,18 @@ function saveSettings(settings) {
   }
 }
 
-export function SettingsProvider({ children }) {
-  const [settings, setSettings] = useState(loadSettings);
+interface SettingsProviderProps {
+  children: ReactNode;
+}
+
+export function SettingsProvider({ children }: SettingsProviderProps) {
+  const [settings, setSettings] = useState<Settings>(loadSettings);
 
   useEffect(() => {
     saveSettings(settings);
   }, [settings]);
 
-  const updateSettings = (newSettings) => {
+  const updateSettings = (newSettings: Partial<Settings>) => {
     setSettings((prev) => ({ ...prev, ...newSettings }));
   };
 
@@ -52,7 +68,7 @@ export function SettingsProvider({ children }) {
   );
 }
 
-export function useSettings() {
+export function useSettings(): SettingsContextType {
   const context = useContext(SettingsContext);
   if (!context) {
     throw new Error('useSettings must be used within a SettingsProvider');

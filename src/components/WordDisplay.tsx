@@ -1,11 +1,15 @@
-import PropTypes from 'prop-types';
 import { useSettings } from '../context/SettingsContext';
 import { splitWordByORP } from '../utils/orp';
 import { FocusFrame } from './FocusFrame';
 
-export function WordDisplay({ currentWord, isFinished }) {
+interface WordDisplayProps {
+  currentWord?: string;
+  isFinished: boolean;
+}
+
+export function WordDisplay({ currentWord = '', isFinished }: WordDisplayProps) {
   const { settings } = useSettings();
-  const { before, orp, after } = splitWordByORP(currentWord || '');
+  const { before, orp, after } = splitWordByORP(currentWord);
 
   return (
     <div className="word-display">
@@ -23,12 +27,3 @@ export function WordDisplay({ currentWord, isFinished }) {
     </div>
   );
 }
-
-WordDisplay.propTypes = {
-  currentWord: PropTypes.string,
-  isFinished: PropTypes.bool.isRequired,
-};
-
-WordDisplay.defaultProps = {
-  currentWord: '',
-};

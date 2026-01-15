@@ -1,14 +1,15 @@
-/**
- * Tokenize text into words with punctuation metadata for smart pauses.
- *
- * Pause multipliers:
- * - Normal word: 1x
- * - Comma (,): 2x
- * - Period, exclamation, question (.!?): 3x
- * - Paragraph break: 5x
- */
+export interface Token {
+  word: string;
+  punctuation: string;
+  pauseMultiplier: number;
+}
 
-const PAUSE_MULTIPLIERS = {
+interface ExtractedWord {
+  word: string;
+  punctuation: string;
+}
+
+const PAUSE_MULTIPLIERS: Record<string, number> = {
   ',': 2,
   ';': 2,
   ':': 2,
@@ -20,11 +21,8 @@ const PAUSE_MULTIPLIERS = {
 
 /**
  * Extract the base word (letters only) from a token that may include punctuation.
- *
- * @param {string} token - The token to clean
- * @returns {{ word: string, punctuation: string }} The cleaned word and trailing punctuation
  */
-function extractWord(token) {
+function extractWord(token: string): ExtractedWord {
   const match = token.match(/^([a-zA-ZÀ-ÿ0-9'-]+)([.,!?;:]*)?$/);
   if (match) {
     return {
@@ -37,12 +35,8 @@ function extractWord(token) {
 
 /**
  * Get the pause multiplier based on punctuation.
- *
- * @param {string} punctuation - The punctuation character(s)
- * @param {boolean} isEndOfParagraph - Whether this token ends a paragraph
- * @returns {number} The pause multiplier
  */
-function getPauseMultiplier(punctuation, isEndOfParagraph) {
+function getPauseMultiplier(punctuation: string, isEndOfParagraph: boolean): number {
   if (isEndOfParagraph) {
     return PAUSE_MULTIPLIERS.paragraph;
   }
@@ -58,17 +52,14 @@ function getPauseMultiplier(punctuation, isEndOfParagraph) {
 
 /**
  * Tokenize text into an array of word objects with pause information.
- *
- * @param {string} text - The text to tokenize
- * @returns {Array<{ word: string, punctuation: string, pauseMultiplier: number }>}
  */
-export function tokenize(text) {
+export function tokenize(text: string): Token[] {
   if (!text || typeof text !== 'string') {
     return [];
   }
 
   const paragraphs = text.split(/\n\s*\n/);
-  const tokens = [];
+  const tokens: Token[] = [];
 
   paragraphs.forEach((paragraph, paragraphIndex) => {
     const words = paragraph.trim().split(/\s+/).filter(Boolean);

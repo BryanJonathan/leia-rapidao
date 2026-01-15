@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, ChangeEvent } from 'react';
 import { SettingsProvider, useSettings } from './context/SettingsContext';
 import { useRSVP } from './hooks/useRSVP';
 import { SettingsToggle, SettingsPanel, TextInputSection, ReaderSection } from './components';
@@ -6,10 +6,10 @@ import { DEFAULT_TEXT } from './utils/const';
 import './App.css';
 
 function CentralReader() {
-  const { settings, updateSettings } = useSettings();
+  const { updateSettings } = useSettings();
   const [showSettings, setShowSettings] = useState(false);
   const [inputText, setInputText] = useState(DEFAULT_TEXT);
-  const [speedInput, setSpeedInput] = useState(String(settings.speed));
+  const [speedInput, setSpeedInput] = useState('200');
   const rsvp = useRSVP();
 
   // Handlers
@@ -25,7 +25,7 @@ function CentralReader() {
     setInputText('');
   }, [rsvp]);
 
-  const handleSpeedInputChange = useCallback((e) => {
+  const handleSpeedInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     rsvp.pause();
     setSpeedInput(e.target.value);
   }, [rsvp]);
@@ -43,7 +43,7 @@ function CentralReader() {
     }
   }, [speedInput, updateSettings]);
 
-  const handleInputChange = useCallback((e) => {
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     setInputText(e.target.value);
   }, []);
 
@@ -53,9 +53,10 @@ function CentralReader() {
 
   // Keyboard shortcuts
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
       // Ignore shortcuts when typing in inputs
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         return;
       }
 

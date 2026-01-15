@@ -1,8 +1,13 @@
+import { ChangeEvent } from 'react';
 import { IoClose, IoSettings } from 'react-icons/io5';
 import { useSettings } from '../context/SettingsContext';
-import PropTypes from 'prop-types';
 
-export function SettingsToggle({ isOpen, onToggle }) {
+interface SettingsToggleProps {
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+export function SettingsToggle({ isOpen, onToggle }: SettingsToggleProps) {
   return (
     <button
       className="settings-toggle"
@@ -14,12 +19,13 @@ export function SettingsToggle({ isOpen, onToggle }) {
   );
 }
 
-SettingsToggle.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onToggle: PropTypes.func.isRequired,
-};
+interface SettingsPanelProps {
+  speedInput: string;
+  onSpeedInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSpeedInputBlur: () => void;
+}
 
-export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur }) {
+export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur }: SettingsPanelProps) {
   const { settings, updateSettings } = useSettings();
 
   return (
@@ -62,9 +68,3 @@ export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur
     </div>
   );
 }
-
-SettingsPanel.propTypes = {
-  speedInput: PropTypes.string.isRequired,
-  onSpeedInputChange: PropTypes.func.isRequired,
-  onSpeedInputBlur: PropTypes.func.isRequired,
-};

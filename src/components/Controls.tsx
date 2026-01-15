@@ -1,7 +1,13 @@
-import PropTypes from 'prop-types';
 import { IoPlay, IoPause, IoStop, IoPlayBack } from 'react-icons/io5';
 
-export function Controls({ isPlaying, onTogglePlayPause, onRewind, onReset }) {
+interface ControlsProps {
+  isPlaying: boolean;
+  onTogglePlayPause: () => void;
+  onRewind: () => void;
+  onReset: () => void;
+}
+
+export function Controls({ isPlaying, onTogglePlayPause, onRewind, onReset }: ControlsProps) {
   return (
     <div className="controls">
       <button
@@ -28,10 +34,3 @@ export function Controls({ isPlaying, onTogglePlayPause, onRewind, onReset }) {
     </div>
   );
 }
-
-Controls.propTypes = {
-  isPlaying: PropTypes.bool.isRequired,
-  onTogglePlayPause: PropTypes.func.isRequired,
-  onRewind: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired
-};

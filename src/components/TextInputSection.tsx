@@ -1,6 +1,12 @@
-import PropTypes from 'prop-types';
+import { ChangeEvent } from 'react';
 
-export function TextInputSection({ inputText, onInputChange, onStart }) {
+interface TextInputSectionProps {
+  inputText: string;
+  onInputChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  onStart: () => void;
+}
+
+export function TextInputSection({ inputText, onInputChange, onStart }: TextInputSectionProps) {
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
   const isDisabled = !inputText.trim();
 
@@ -32,9 +38,3 @@ export function TextInputSection({ inputText, onInputChange, onStart }) {
     </div>
   );
 }
-
-TextInputSection.propTypes = {
-  inputText: PropTypes.string.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onStart: PropTypes.func.isRequired,
-};

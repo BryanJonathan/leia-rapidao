@@ -1,9 +1,14 @@
-import PropTypes from 'prop-types';
+import { RSVPHook } from '../hooks/useRSVP';
 import { WordDisplay } from './WordDisplay';
 import { ProgressBar } from './ProgressBar';
 import { Controls } from './Controls';
 
-export function ReaderSection({ rsvp, onNewText }) {
+interface ReaderSectionProps {
+  rsvp: RSVPHook;
+  onNewText: () => void;
+}
+
+export function ReaderSection({ rsvp, onNewText }: ReaderSectionProps) {
   const {
     currentWord,
     currentIndex,
@@ -42,18 +47,3 @@ export function ReaderSection({ rsvp, onNewText }) {
     </div>
   );
 }
-
-ReaderSection.propTypes = {
-  rsvp: PropTypes.shape({
-    currentWord: PropTypes.string,
-    currentIndex: PropTypes.number.isRequired,
-    totalWords: PropTypes.number.isRequired,
-    isPlaying: PropTypes.bool.isRequired,
-    progress: PropTypes.number.isRequired,
-    isFinished: PropTypes.bool.isRequired,
-    togglePlayPause: PropTypes.func.isRequired,
-    rewind: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired,
-  }).isRequired,
-  onNewText: PropTypes.func.isRequired,
-};

@@ -1,6 +1,10 @@
-import PropTypes from 'prop-types';
+interface ProgressBarProps {
+  progress: number;
+  currentIndex: number;
+  totalWords: number;
+}
 
-export function ProgressBar({ progress, currentIndex, totalWords }) {
+export function ProgressBar({ progress, currentIndex, totalWords }: ProgressBarProps) {
   return (
     <div className="progress-container">
       <div className="progress-bar">
@@ -15,9 +19,3 @@ export function ProgressBar({ progress, currentIndex, totalWords }) {
     </div>
   );
 }
-
-ProgressBar.propTypes = {
-  progress: PropTypes.number.isRequired,
-  currentIndex: PropTypes.number.isRequired,
-  totalWords: PropTypes.number.isRequired,
-};

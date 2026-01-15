@@ -1,14 +1,37 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { tokenize } from '../utils/tokenizer';
+import { tokenize, Token } from '../utils/tokenizer';
 import { useSettings } from '../context/SettingsContext';
 
-export function useRSVP() {
+export interface RSVPState {
+  currentWord: string;
+  currentIndex: number;
+  totalWords: number;
+  isPlaying: boolean;
+  progress: number;
+  isFinished: boolean;
+  hasText: boolean;
+}
+
+export interface RSVPActions {
+  setText: (text: string) => void;
+  play: () => void;
+  pause: () => void;
+  togglePlayPause: () => void;
+  reset: () => void;
+  rewind: (n?: number) => void;
+  forward: (n?: number) => void;
+  goToIndex: (index: number) => void;
+}
+
+export type RSVPHook = RSVPState & RSVPActions;
+
+export function useRSVP(): RSVPHook {
   const { settings } = useSettings();
-  const [tokens, setTokens] = useState([]);
+  const [tokens, setTokens] = useState<Token[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [text, setText] = useState('');
-  const timeoutRef = useRef(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Tokenize text when it changes
   useEffect(() => {
@@ -76,7 +99,7 @@ export function useRSVP() {
     setCurrentIndex((prev) => Math.min(tokens.length - 1, prev + n));
   }, [tokens.length]);
 
-  const goToIndex = useCallback((index) => {
+  const goToIndex = useCallback((index: number) => {
     setCurrentIndex(Math.max(0, Math.min(tokens.length - 1, index)));
   }, [tokens.length]);
 
