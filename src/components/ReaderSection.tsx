@@ -1,4 +1,5 @@
 import { RSVPHook } from '../hooks/useRSVP';
+import { useSettings } from '../context/SettingsContext';
 import { WordDisplay } from './WordDisplay';
 import { ProgressBar } from './ProgressBar';
 import { Controls } from './Controls';
@@ -9,6 +10,7 @@ interface ReaderSectionProps {
 }
 
 export function ReaderSection({ rsvp, onNewText }: ReaderSectionProps) {
+  const { t } = useSettings();
   const {
     currentWord,
     currentIndex,
@@ -42,7 +44,7 @@ export function ReaderSection({ rsvp, onNewText }: ReaderSectionProps) {
       />
 
       <button className="new-text-btn" onClick={onNewText}>
-        Novo Texto
+        {t.newText}
       </button>
     </div>
   );

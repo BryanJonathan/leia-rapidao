@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { useSettings } from '../context/SettingsContext';
 
 interface TextInputSectionProps {
   inputText: string;
@@ -7,25 +8,26 @@ interface TextInputSectionProps {
 }
 
 export function TextInputSection({ inputText, onInputChange, onStart }: TextInputSectionProps) {
+  const { t } = useSettings();
   const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
   const isDisabled = !inputText.trim();
 
   return (
     <div className="input-section">
-      <h1 className="title">Leitura Rápida</h1>
-      <p className="subtitle">Cole seu texto e leia mais rápido</p>
+      <h1 className="title">{t.title}</h1>
+      <p className="subtitle">{t.subtitle}</p>
 
       <textarea
         className="text-input"
         value={inputText}
         onChange={onInputChange}
-        placeholder="Cole seu texto aqui..."
+        placeholder={t.placeholder}
         rows={8}
-        aria-label="Campo de texto para leitura"
+        aria-label={t.textInputAriaLabel}
       />
 
       <div className="word-count">
-        {wordCount} {wordCount === 1 ? 'palavra' : 'palavras'}
+        {wordCount} {wordCount === 1 ? t.wordSingular : t.wordPlural}
       </div>
 
       <button
@@ -33,7 +35,7 @@ export function TextInputSection({ inputText, onInputChange, onStart }: TextInpu
         onClick={onStart}
         disabled={isDisabled}
       >
-        Iniciar Leitura
+        {t.startReading}
       </button>
     </div>
   );
