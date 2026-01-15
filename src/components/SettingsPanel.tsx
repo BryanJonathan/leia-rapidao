@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
 import { IoClose, IoSettings } from 'react-icons/io5';
 import { useSettings } from '../context/SettingsContext';
+import { Language } from '../utils/i18n';
 
 interface SettingsToggleProps {
   isOpen: boolean;
@@ -8,11 +9,13 @@ interface SettingsToggleProps {
 }
 
 export function SettingsToggle({ isOpen, onToggle }: SettingsToggleProps) {
+  const { t } = useSettings();
+
   return (
     <button
       className="settings-toggle"
       onClick={onToggle}
-      aria-label={isOpen ? 'Close settings' : 'Open settings'}
+      aria-label={isOpen ? t.closeSettings : t.openSettings}
     >
       {isOpen ? <IoClose /> : <IoSettings />}
     </button>
@@ -26,14 +29,30 @@ interface SettingsPanelProps {
 }
 
 export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur }: SettingsPanelProps) {
-  const { settings, updateSettings } = useSettings();
+  const { settings, updateSettings, t } = useSettings();
+
+  const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    updateSettings({ language: e.target.value as Language });
+  };
 
   return (
     <div className="settings-panel">
-      <h3>Settings</h3>
+      <h3>{t.settings}</h3>
 
       <div className="setting-item">
-        <label htmlFor="speed-input">Speed (ms)</label>
+        <label htmlFor="language-select">{t.language}</label>
+        <select
+          id="language-select"
+          value={settings.language}
+          onChange={handleLanguageChange}
+        >
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <div className="setting-item">
+        <label htmlFor="speed-input">{t.speed}</label>
         <input
           id="speed-input"
           type="number"
@@ -47,7 +66,7 @@ export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur
       </div>
 
       <div className="setting-item">
-        <label htmlFor="text-color">Text Color</label>
+        <label htmlFor="text-color">{t.textColor}</label>
         <input
           id="text-color"
           type="color"
@@ -57,7 +76,7 @@ export function SettingsPanel({ speedInput, onSpeedInputChange, onSpeedInputBlur
       </div>
 
       <div className="setting-item">
-        <label htmlFor="highlight-color">Highlight Color</label>
+        <label htmlFor="highlight-color">{t.highlightColor}</label>
         <input
           id="highlight-color"
           type="color"

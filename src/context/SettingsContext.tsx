@@ -1,15 +1,18 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, useMemo } from 'react';
+import { Language, Translations, getTranslations } from '../utils/i18n';
 
 export interface Settings {
   speed: number;
   textColor: string;
   highlightColor: string;
+  language: Language;
 }
 
 interface SettingsContextType {
   settings: Settings;
   updateSettings: (newSettings: Partial<Settings>) => void;
   resetSettings: () => void;
+  t: Translations;
 }
 
 const STORAGE_KEY = 'rsvp-settings';
@@ -18,6 +21,7 @@ const defaultSettings: Settings = {
   speed: 200,
   textColor: '#ffffff',
   highlightColor: '#ff6b6b',
+  language: 'pt',
 };
 
 const SettingsContext = createContext<SettingsContextType | null>(null);
@@ -49,6 +53,8 @@ interface SettingsProviderProps {
 export function SettingsProvider({ children }: SettingsProviderProps) {
   const [settings, setSettings] = useState<Settings>(loadSettings);
 
+  const t = useMemo(() => getTranslations(settings.language), [settings.language]);
+
   useEffect(() => {
     saveSettings(settings);
   }, [settings]);
@@ -62,7 +68,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   };
 
   return (
-    <SettingsContext.Provider value={{ settings, updateSettings, resetSettings }}>
+    <SettingsContext.Provider value={{ settings, updateSettings, resetSettings, t }}>
       {children}
     </SettingsContext.Provider>
   );

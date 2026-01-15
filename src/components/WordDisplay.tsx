@@ -8,7 +8,7 @@ interface WordDisplayProps {
 }
 
 export function WordDisplay({ currentWord = '', isFinished }: WordDisplayProps) {
-  const { settings } = useSettings();
+  const { settings, t } = useSettings();
   const { before, orp, after } = splitWordByORP(currentWord);
 
   return (
@@ -16,7 +16,7 @@ export function WordDisplay({ currentWord = '', isFinished }: WordDisplayProps) 
       <FocusFrame />
 
       {isFinished ? (
-        <span className="finished-text">Done!</span>
+        <span className="finished-text">{t.finished}</span>
       ) : (
         <span className="word" style={{ color: settings.textColor }}>
           <span className="before">{before}</span>
