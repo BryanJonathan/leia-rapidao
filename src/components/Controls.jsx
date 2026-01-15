@@ -1,43 +1,37 @@
-import { HStack, IconButton, Button } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
+import { IoPlay, IoPause, IoStop, IoPlayBack } from 'react-icons/io5';
 
-export function Controls({
-  isPlaying,
-  onTogglePlayPause,
-  onRewind,
-  onReset,
-  disabled,
-}) {
+export function Controls({ isPlaying, onTogglePlayPause, onRewind, onReset }) {
   return (
-    <HStack gap={3} justify="center">
-      <IconButton
-        aria-label="Rewind 5 words"
-        variant="outline"
-        size="lg"
+    <div className="controls">
+      <button
+        className="control-btn"
         onClick={onRewind}
-        disabled={disabled}
+        aria-label="Rewind 5 words"
       >
-        ⏪
-      </IconButton>
-
-      <Button
-        size="lg"
-        colorPalette={isPlaying ? 'orange' : 'green'}
+        <IoPlayBack />
+      </button>
+      <button
+        className="control-btn"
         onClick={onTogglePlayPause}
-        disabled={disabled}
-        minW="120px"
+        aria-label={isPlaying ? 'Pause' : 'Play'}
       >
-        {isPlaying ? '⏸ Pause' : '▶ Play'}
-      </Button>
-
-      <IconButton
-        aria-label="Reset"
-        variant="outline"
-        size="lg"
+        {isPlaying ? <IoPause /> : <IoPlay />}
+      </button>
+      <button
+        className="control-btn"
         onClick={onReset}
-        disabled={disabled}
+        aria-label="Reset"
       >
-        ⏹
-      </IconButton>
-    </HStack>
+        <IoStop />
+      </button>
+    </div>
   );
 }
+
+Controls.propTypes = {
+  isPlaying: PropTypes.bool.isRequired,
+  onTogglePlayPause: PropTypes.func.isRequired,
+  onRewind: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired
+};

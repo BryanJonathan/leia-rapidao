@@ -1,0 +1,9 @@
+export const DEFAULT_TEXT = `A aplicação tem como objetivo transformar a forma como as pessoas consomem textos longos no ambiente digital, tornando a leitura mais rápida, fluida e menos cansativa. Em vez de apresentar o texto no formato tradicional, com linhas e parágrafos que exigem constantes movimentos dos olhos, o sistema utiliza uma abordagem focada no processamento natural do cérebro humano.
+
+Para isso, a aplicação combina a técnica de Rapid Serial Visual Presentation (RSVP), que exibe uma palavra por vez sempre na mesma posição da tela. Dessa forma, o leitor não precisa mover os olhos para acompanhar o texto, reduzindo o esforço visual e permitindo que a atenção fique totalmente focada no conteúdo apresentado. A leitura passa a acontecer como um fluxo contínuo, controlado por uma velocidade ajustável de acordo com a preferência do usuário.
+
+Além disso, cada palavra é exibida com destaque em seu Optimal Recognition Point (ORP), que é o ponto ideal onde o cérebro reconhece a palavra mais rapidamente. Esse ponto varia conforme o tamanho da palavra e permanece sempre alinhado na interface. Com isso, o reconhecimento das palavras se torna mais eficiente, aumentando a velocidade de leitura sem comprometer a compreensão.
+
+A aplicação também considera o ritmo natural da linguagem, aplicando pausas automáticas em sinais de pontuação e quebras de parágrafo. Essas pausas ajudam o cérebro a processar a informação, mantendo a clareza do texto mesmo em velocidades mais altas. O usuário pode pausar, retomar ou voltar algumas palavras sempre que necessário, garantindo controle total sobre a experiência.
+
+No final, o sistema se propõe a ser uma ferramenta prática e acessível para leitura de artigos, estudos e conteúdos diversos, unindo princípios científicos de cognição e design de interface. O foco não é apenas ler mais rápido, mas ler melhor, com menos fadiga e maior aproveitamento do conteúdo.`

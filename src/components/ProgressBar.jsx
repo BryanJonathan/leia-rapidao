@@ -1,31 +1,23 @@
-import { Box, Text, HStack } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
-export function ProgressBar({ current, total, progress }) {
+export function ProgressBar({ progress, currentIndex, totalWords }) {
   return (
-    <Box w="100%" maxW="600px" mx="auto">
-      <HStack justify="space-between" mb={2}>
-        <Text fontSize="sm" color="fg.muted">
-          Word {current} of {total}
-        </Text>
-        <Text fontSize="sm" color="fg.muted">
-          {Math.round(progress)}%
-        </Text>
-      </HStack>
-      <Box
-        w="100%"
-        h="8px"
-        bg="bg.muted"
-        borderRadius="full"
-        overflow="hidden"
-      >
-        <Box
-          h="100%"
-          bg="blue.500"
-          borderRadius="full"
-          transition="width 0.1s ease-out"
+    <div className="progress-container">
+      <div className="progress-bar">
+        <div
+          className="progress-fill"
           style={{ width: `${progress}%` }}
         />
-      </Box>
-    </Box>
+      </div>
+      <div className="progress-text">
+        {currentIndex + 1} / {totalWords}
+      </div>
+    </div>
   );
 }
+
+ProgressBar.propTypes = {
+  progress: PropTypes.number.isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  totalWords: PropTypes.number.isRequired,
+};
